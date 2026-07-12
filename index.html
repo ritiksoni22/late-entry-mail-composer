@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Late Entry Mail Composer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <div class="blob"></div>
+
+  <div class="card">
+    <p class="eyebrow">Campus Request</p>
+    <h1>Late Entry Mail Composer</h1>
+    <p class="subtitle">Select students and expected return time, then draft the request email.</p>
+
+    <div class="field">
+      <label class="section-label">Students going out</label>
+      <div class="multiselect" id="multiselect">
+        <button type="button" class="multiselect-toggle" id="multiselectToggle">
+          <span id="multiselectSummary">Select students…</span>
+          <span class="arrow">▾</span>
+        </button>
+        <div class="multiselect-panel">
+          <div class="multiselect-search">
+            <input type="text" id="studentSearch" placeholder="Search by name or roll number">
+          </div>
+          <div class="multiselect-actions">
+            <button type="button" id="selectAllBtn">Select all</button>
+            <button type="button" id="clearAllBtn">Clear</button>
+          </div>
+          <div class="multiselect-list" id="studentList"></div>
+        </div>
+      </div>
+      <div class="selected-chips" id="selectedChips"></div>
+    </div>
+
+    <div class="field">
+      <label class="section-label" for="timeInput">Expected return time</label>
+      <input type="time" id="timeInput" step="900">
+    </div>
+
+    <button type="button" class="send-btn" id="sendBtn" disabled>Send Email</button>
+    <p class="hint">This opens your default emailer with the prepared body. Review before sending.</p>
+    <p class="hint">This tool is only to save time, and does NOT claim as any standard
+      approach. Use it responsibly and with vigilance.</p>
+  </div>
+
+  <script src="index.js"></script>
+
+</body>
+
+</html>
