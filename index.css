@@ -85,8 +85,33 @@ label.section-label {
   color: var(--ink);
 }
 
+label.section-label .optional {
+  font-weight: 400;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .field {
   margin-bottom: 28px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 /* Multi-select dropdown */

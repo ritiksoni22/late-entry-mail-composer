@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>thumbnail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f9faff;
+    --card: #ffffff;
+    --border: #e5e2d8;
+    --ink: #25282b;
+    --muted: #828282;
+    --accent: #fdc435;
+    --accent-hover: #f5b400;
+    --accent-tint: #fff3d6;
+    --font-display: "Playfair Display", Georgia, serif;
+    --font-body: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    width: 1280px;
+    height: 640px;
+    background: var(--bg);
+    font-family: var(--font-body);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .blob-1 {
+    position: absolute;
+    top: -140px;
+    right: -120px;
+    width: 480px;
+    height: 480px;
+    background: var(--accent);
+    border-radius: 62% 38% 55% 45% / 48% 45% 55% 52%;
+    opacity: 0.95;
+  }
+  .blob-2 {
+    position: absolute;
+    bottom: -180px;
+    left: -140px;
+    width: 380px;
+    height: 380px;
+    background: var(--accent-tint);
+    border-radius: 55% 45% 40% 60% / 55% 55% 45% 45%;
+  }
+
+  .stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 76px;
+    gap: 56px;
+  }
+
+  .copy {
+    flex: 0 0 460px;
+  }
+
+  .eyebrow {
+    color: var(--accent-hover);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 54px;
+    line-height: 1.12;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+
+  p.desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 0 28px;
+    max-width: 420px;
+  }
+
+  .pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .pill .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-hover);
+  }
+
+  /* mock card */
+  .mock {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .mock-card {
+    width: 420px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 34px 32px;
+    box-shadow: 0 40px 80px rgba(37, 40, 43, 0.16);
+    transform: rotate(1.5deg);
+  }
+  .mock-eyebrow {
+    color: var(--accent-hover);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+  }
+  .mock-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 24px;
+    margin: 0 0 22px;
+    color: var(--ink);
+  }
+  .mock-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .mock-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .mock-field .arrow { color: var(--muted); font-size: 11px; }
+  .mock-chips {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .mock-chip {
+    padding: 6px 12px;
+    background: var(--accent-tint);
+    border: 1px solid #f5e2ad;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .mock-time {
+    margin-bottom: 22px;
+  }
+  .mock-btn {
+    background: var(--accent);
+    color: var(--ink);
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div class="blob-1"></div>
+<div class="blob-2"></div>
+
+<div class="stage">
+  <div class="copy">
+    <p class="eyebrow">Campus Request Tool</p>
+    <h1>Late Entry<br>Mail Composer</h1>
+    <p class="desc">Pick the students going out and their expected return time — get a ready-to-send permission email in one click.</p>
+    <div class="pills">
+      <span class="pill"><span class="dot"></span>Multi-select students</span>
+      <span class="pill"><span class="dot"></span>15-min time picker</span>
+      <span class="pill"><span class="dot"></span>One-click mailto</span>
+    </div>
+  </div>
+
+  <div class="mock">
+    <div class="mock-card">
+      <p class="mock-eyebrow">Campus Request</p>
+      <h2 class="mock-title">Late Entry Mail Composer</h2>
+
+      <p class="mock-label">Students going out</p>
+      <div class="mock-field">
+        <span>3 students selected</span>
+        <span class="arrow">▾</span>
+      </div>
+      <div class="mock-chips">
+        <span class="mock-chip">Student 1 ×</span>
+        <span class="mock-chip">Student 2 ×</span>
+        <span class="mock-chip">Student 3 ×</span>
+      </div>
+
+      <p class="mock-label">Expected return time</p>
+      <div class="mock-field mock-time">
+        <span>12:15 AM</span>
+        <span>🕐</span>
+      </div>
+
+      <div class="mock-btn">Send Email</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
