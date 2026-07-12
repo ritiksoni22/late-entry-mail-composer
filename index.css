@@ -77,6 +77,39 @@ h1 {
   line-height: 1.6;
 }
 
+.tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 6px;
+  margin-bottom: 28px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tab:hover {
+  color: var(--ink);
+}
+
+.tab.active {
+  background: var(--accent);
+  color: var(--ink);
+}
+
 label.section-label {
   display: block;
   font-size: 13px;
@@ -285,9 +318,15 @@ input[type="text"]:focus {
   background: var(--accent);
 }
 
-/* Time picker */
-input[type="time"] {
+/* Time / date / date-time pickers */
+input[type="time"],
+input[type="date"],
+input[type="datetime-local"] {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   padding: 12px 14px;
   border: 1.5px solid var(--border);
   border-radius: 12px;
@@ -300,20 +339,85 @@ input[type="time"] {
 }
 
 input[type="time"]:hover,
-input[type="time"]:focus {
+input[type="time"]:focus,
+input[type="date"]:hover,
+input[type="date"]:focus,
+input[type="datetime-local"]:hover,
+input[type="datetime-local"]:focus {
   outline: none;
   border-color: var(--accent);
 }
 
-input[type="time"]::-webkit-calendar-picker-indicator {
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   border-radius: 6px;
   padding: 4px;
   filter: invert(0.6) sepia(1) saturate(4) hue-rotate(320deg);
 }
 
-input[type="time"]::-webkit-calendar-picker-indicator:hover {
+input[type="time"]::-webkit-calendar-picker-indicator:hover,
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
   background: var(--accent-tint);
+}
+
+/* Guest list */
+.guest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.guest-row {
+  display: flex;
+  gap: 8px;
+}
+
+.guest-row .guest-name {
+  flex: 2;
+}
+
+.guest-row .guest-phone {
+  flex: 1;
+}
+
+.guest-remove {
+  flex: 0 0 auto;
+  width: 40px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.guest-remove:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.add-guest-btn {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px dashed var(--border);
+  border-radius: 12px;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.add-guest-btn:hover {
+  border-color: var(--accent);
+  color: var(--ink);
 }
 
 button.send-btn {

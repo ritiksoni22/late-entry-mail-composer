@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Late Entry Mail Composer</title>
+  <title>Quik mailer</title>
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fdc435'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,39 +20,82 @@
   <div class="blob"></div>
 
   <div class="card">
-    <p class="eyebrow">Campus Request</p>
-    <h1>Late Entry Mail Composer</h1>
-    <p class="subtitle">Select students and expected return time, then draft the request email.</p>
+    <p class="eyebrow">Campus Mailer</p>
+    <h1>Quik mailer</h1>
+    <p class="subtitle">Draft late-entry or offboarding requests for campus security in seconds.</p>
 
-    <div class="field">
-      <label class="section-label">Students going out</label>
-      <div class="multiselect" id="multiselect">
-        <button type="button" class="multiselect-toggle" id="multiselectToggle">
-          <span id="multiselectSummary">Select students…</span>
-          <span class="arrow">▾</span>
-        </button>
-        <div class="multiselect-panel">
-          <div class="multiselect-search">
-            <input type="text" id="studentSearch" placeholder="Search by name or roll number">
+    <div class="tabs" id="mailTabs">
+      <button type="button" class="tab active" data-mode="lateEntry">Late Entry</button>
+      <button type="button" class="tab" data-mode="offboarding">Offboarding</button>
+      <button type="button" class="tab" data-mode="guestVisit">Guest Visit</button>
+    </div>
+
+    <div id="lateEntryForm" class="mail-form">
+      <div class="field">
+        <label class="section-label">Students going out</label>
+        <div class="multiselect" id="multiselect">
+          <button type="button" class="multiselect-toggle" id="multiselectToggle">
+            <span id="multiselectSummary">Select students…</span>
+            <span class="arrow">▾</span>
+          </button>
+          <div class="multiselect-panel">
+            <div class="multiselect-search">
+              <input type="text" id="studentSearch" placeholder="Search by name or roll number">
+            </div>
+            <div class="multiselect-actions">
+              <button type="button" id="selectAllBtn">Select all</button>
+              <button type="button" id="clearAllBtn">Clear</button>
+            </div>
+            <div class="multiselect-list" id="studentList"></div>
           </div>
-          <div class="multiselect-actions">
-            <button type="button" id="selectAllBtn">Select all</button>
-            <button type="button" id="clearAllBtn">Clear</button>
-          </div>
-          <div class="multiselect-list" id="studentList"></div>
         </div>
+        <div class="selected-chips" id="selectedChips"></div>
       </div>
-      <div class="selected-chips" id="selectedChips"></div>
+
+      <div class="field">
+        <label class="section-label" for="timeInput">Expected return time</label>
+        <input type="time" id="timeInput" step="900">
+      </div>
+
+      <div class="field">
+        <label class="section-label" for="vehicleInput">Vehicle number <span class="optional">(optional)</span></label>
+        <input type="text" id="vehicleInput" placeholder="e.g. RJ14 AB 1234">
+      </div>
     </div>
 
-    <div class="field">
-      <label class="section-label" for="timeInput">Expected return time</label>
-      <input type="time" id="timeInput" step="900">
+    <div id="offboardingForm" class="mail-form" hidden>
+      <div class="field">
+        <label class="section-label" for="leaveInput">Leave campus</label>
+        <input type="datetime-local" id="leaveInput">
+      </div>
+
+      <div class="field">
+        <label class="section-label" for="returnInput">Return campus</label>
+        <input type="datetime-local" id="returnInput">
+      </div>
     </div>
 
-    <div class="field">
-      <label class="section-label" for="vehicleInput">Vehicle number <span class="optional">(optional)</span></label>
-      <input type="text" id="vehicleInput" placeholder="e.g. RJ14 AB 1234">
+    <div id="guestVisitForm" class="mail-form" hidden>
+      <div class="field">
+        <label class="section-label" for="visitDateInput">Visit date</label>
+        <input type="date" id="visitDateInput">
+      </div>
+
+      <div class="field">
+        <label class="section-label" for="visitStartInput">Arrival time</label>
+        <input type="time" id="visitStartInput" step="900">
+      </div>
+
+      <div class="field">
+        <label class="section-label" for="visitEndInput">Departure time</label>
+        <input type="time" id="visitEndInput" step="900">
+      </div>
+
+      <div class="field">
+        <label class="section-label">Guests</label>
+        <div class="guest-list" id="guestRows"></div>
+        <button type="button" class="add-guest-btn" id="addGuestBtn">+ Add guest</button>
+      </div>
     </div>
 
     <button type="button" class="send-btn" id="sendBtn" disabled>Send Email</button>

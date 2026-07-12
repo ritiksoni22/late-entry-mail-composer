@@ -189,6 +189,28 @@
     font-weight: 700;
     font-size: 14px;
   }
+  .mock-tabs {
+    display: flex;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 22px;
+  }
+  .mock-tab {
+    flex: 1;
+    text-align: center;
+    padding: 8px 6px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .mock-tab.active {
+    background: var(--accent);
+    color: var(--ink);
+  }
 </style>
 </head>
 <body>
@@ -198,20 +220,26 @@
 
 <div class="stage">
   <div class="copy">
-    <p class="eyebrow">Campus Request Tool</p>
-    <h1>Late Entry<br>Mail Composer</h1>
-    <p class="desc">Pick the students going out and their expected return time — get a ready-to-send permission email in one click.</p>
+    <p class="eyebrow">Campus Mailer</p>
+    <h1>Quik mailer</h1>
+    <p class="desc">Draft late-entry, offboarding, or guest-visit requests for campus security — pick the details, get a ready-to-send email in one click.</p>
     <div class="pills">
-      <span class="pill"><span class="dot"></span>Multi-select students</span>
-      <span class="pill"><span class="dot"></span>15-min time picker</span>
-      <span class="pill"><span class="dot"></span>One-click mailto</span>
+      <span class="pill"><span class="dot"></span>Late Entry</span>
+      <span class="pill"><span class="dot"></span>Offboarding</span>
+      <span class="pill"><span class="dot"></span>Guest Visit</span>
     </div>
   </div>
 
   <div class="mock">
     <div class="mock-card">
-      <p class="mock-eyebrow">Campus Request</p>
-      <h2 class="mock-title">Late Entry Mail Composer</h2>
+      <p class="mock-eyebrow">Campus Mailer</p>
+      <h2 class="mock-title">Quik mailer</h2>
+
+      <div class="mock-tabs">
+        <span class="mock-tab active">Late Entry</span>
+        <span class="mock-tab">Offboarding</span>
+        <span class="mock-tab">Guest Visit</span>
+      </div>
 
       <p class="mock-label">Students going out</p>
       <div class="mock-field">
